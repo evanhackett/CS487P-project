@@ -24,3 +24,11 @@ sqlite> .mode csv
 sqlite> .import data.csv table1
 ```
 
+To see the command to create the table (the schema file), see `table1.schema`.
+
+To see the result of an example query, see `output-sqlite.txt`. The query ran was:
+
+```
+sqlite> select * from TABLE1
+...     WHERE unique1 < 50;
+```
