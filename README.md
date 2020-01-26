@@ -32,3 +32,14 @@ To see the result of an example query, see `output-sqlite.txt`. The query ran wa
 sqlite> select * from TABLE1
 ...     WHERE unique1 < 50;
 ```
+
+## Lessons learned / issues encountered
+
+One issue we encountered was when we originally imported the csv file into sqlite, all of our columns had type TEXT. We didn't know that, so our queries were returning confusing results. For example, running:
+
+```
+sqlite> select * from TABLE1
+...     WHERE unique1 < 50;
+```
+
+returned rows where unique1 was greater than 50, which made no sense at first. Once we realized that unique1 was TEXT instead of integer, we knew we needed to create a proper schema to set the types.
