@@ -14,7 +14,7 @@ $ npm i lodash
 Then the script can be ran to create the csv file:
 
 ```
-$ node generate_csv.js
+$ node generate_csv.js > data.csv
 ```
 
 To load the csv file into sqlite:
