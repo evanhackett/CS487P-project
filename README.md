@@ -1,6 +1,13 @@
 # CS487P-project
 Database Benchmark Project for CS487P
 
+## Group Members
+
+* Evan Hackett
+* Aidan Reidel
+
+## Instructions
+
 We chose to use sqlite and postgresql as our systems to benchmark. We chose these systems simply because they are the main databases we have experience using.
 
 To populate the databases with data, we wrote a script for generating a csv file called `generate_csv.js`. We chose javascript (nodejs) as our language since we both prefer it.
