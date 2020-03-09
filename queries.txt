@@ -1,0 +1,39 @@
+Part 1:
+  ???
+Part 2:
+  Make the index:
+
+  psql:
+    Index on onePercent:
+      CREATE TEMP TABLE TMP AS SELECT * FROM HUNDREDKTUP WHERE onePercent = 1;
+      CREATE TEMP TABLE TMP AS SELECT * FROM ONEMTUP WHERE onePercent = 1;
+      CREATE TEMP TABLE TMP AS SELECT * FROM TENMTUP WHERE onePercent = 1;
+    No index:
+      CREATE TEMP TABLE TMP AS SELECT * FROM HUNDREDKTUP WHERE two = 1;
+      CREATE TEMP TABLE TMP AS SELECT * FROM ONEMTUP WHERE two = 1;
+      CREATE TEMP TABLE TMP AS SELECT * FROM TENMTUP WHERE two = 1;
+  Sqlite:
+    Index on onePercent:
+      CREATE TABLE TMP AS SELECT * FROM HUNDREDKTUP WHERE onePercent = 1;
+      CREATE TABLE TMP AS SELECT * FROM ONEMTUP WHERE onePercent = 1;
+      CREATE TABLE TMP AS SELECT * FROM TENMTUP WHERE onePercent = 1;
+    No Index:
+      CREATE TABLE TMP AS SELECT * FROM HUNDREDKTUP WHERE two = 1;
+      CREATE TABLE TMP AS SELECT * FROM ONEMTUP WHERE two = 1;
+      CREATE TABLE TMP AS SELECT * FROM TENMTUP WHERE two = 1;
+Part 3:
+  psql:
+    CREATE TEMP TABLE TMP AS SELECT t1.unique1 FROM HUNDREDKTUP t1, HUNDREDKTUP t2 WHERE t1.unique1 = t2.unique2;
+    CREATE TEMP TABLE TMP AS SELECT t1.unique1 FROM ONEMTUP t1, ONEMTUP t2 WHERE t1.unique1 = t2.unique2;
+    CREATE TEMP TABLE TMP AS SELECT t1.unique1 FROM TENMTUP t1, TENMTUP t2 WHERE t1.unique1 = t2.unique2;
+  Sqlite:
+    CREATE TABLE TMP AS SELECT t1.unique1 FROM HUNDREDKTUP t1, HUNDREDKTUP t2 WHERE t1.unique1 = t2.unique2;
+    CREATE TABLE TMP AS SELECT t1.unique1 FROM ONEMTUP t1, ONEMTUP t2 WHERE t1.unique1 = t2.unique2;
+    CREATE TABLE TMP AS SELECT t1.unique1 FROM TENMTUP t1, TENMTUP t2 WHERE t1.unique1 = t2.unique2;
+Part 4:
+  psql:
+    CREATE TEMP TABLE TMP AS SELECT t1.unique1 FROM TENMTUP t1, TENMTUP t2 WHERE (t1.tenPercent = 2) AND (t1.unique1 = t2.unique2);
+    SET enable_mergejoin TO FALSE;
+    SET enable_hashjoin TO FALSE;
+  Sqlite:
+    CREATE TABLE TMP AS SELECT t1.unique1 FROM TENMTUP t1, TENMTUP t2 WHERE (t1.tenPercent = 2) AND (t1.unique1 = t2.unique2);
