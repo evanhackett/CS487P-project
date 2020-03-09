@@ -1,12 +1,16 @@
 const { Pool } = require('pg')
-const pool = new Pool()
-
 
 // number of concurrent writers
-const NUM_WRITERS = 1
+const NUM_WRITERS = 50
+
+const pool = new Pool({
+  max: NUM_WRITERS
+})
 
 for (let i = 0; i < NUM_WRITERS; i++) {
-  const query = `UPDATE table1 SET string4 = $1 WHERE onepercent = $2`    
+  const query = `UPDATE table1 SET string4 = $1 WHERE onepercent = $2`
 
-  pool.query(query, ["hello", i])
+  pool.query(query, ['test', i])
 }
+
+pool.end()
