@@ -6,7 +6,7 @@ const pool = new Pool()
 const NUM_WRITERS = 1
 
 for (let i = 0; i < NUM_WRITERS; i++) {
-  const query = `UPDATE table1 SET string4 = "hello" WHERE onepercent = ${i}`    
+  const query = `UPDATE table1 SET string4 = $1 WHERE onepercent = $2`    
 
-  pool.query(query)
+  pool.query(query, ["hello", i])
 }
